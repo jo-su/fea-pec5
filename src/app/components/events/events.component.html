@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>Todos los eventos culturales</h1>
+    <ul>
+        <li *ngFor="let event of events" >
+            <a [routerLink]="['/event', event.id]" class="">
+                {{event.id}} - {{event.nameEs}}
+            </a>
+        </li>
+    </ul>
+    <p>Total items: {{totalItems}}</p>
+    <p>{{currentPage}}/{{totalPages}} pages</p>
+</div>
+<button (click)='navigateToPage((+currentPage)+1)'>Next page</button>
+
