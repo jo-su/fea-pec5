@@ -1,8 +1,13 @@
-<ng-template [ngIf]="event">
-    <h1>{{event.nameEs}}</h1>
+
+    <mat-toolbar color="primary">
+        <span>{{event.nameEs}}</span>
+        <span class="example-spacer"></span>
+    </mat-toolbar>
     <div [innerHTML]="event.descriptionEs"></div>
+    <!--
     <ng-template [ngIf]="event.images[0]">
         <img src="{{event.images[0].imageUrl}}" alt="Girl in a jacket">
     </ng-template>
-</ng-template>
+    -->
+
 

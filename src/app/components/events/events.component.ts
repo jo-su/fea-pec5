@@ -1,12 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core';
+
 import { ActivatedRoute } from '@angular/router';
-import { EventResponse, Event } from 'src/app/models/event.interface';
+import { EventsResponse, Event } from 'src/app/models/event.interface';
 import { EventsService } from 'src/app/services/events.service'
+
+import { bounceInOnEnterAnimation, fadeInUpOnEnterAnimation } from 'angular-animations';
+
+
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css']
+  styleUrls: ['./events.component.css'],
+  animations: [fadeInUpOnEnterAnimation(),
+    bounceInOnEnterAnimation()],
 })
 export class EventsComponent implements OnInit{
 
@@ -14,35 +21,33 @@ export class EventsComponent implements OnInit{
   totalPages: number = 0;
   totalItems: number = 0;
   currentPage: number = 1;
-  @Input() requestedPage: number = 1;
+  loading: boolean = true;
+
+  displayedColumns: string[] = ['nameEs', 'typeEs', 'municipalityEs', 'establishmentEs', 'startDate'];
   
-  constructor(private eventsService: EventsService,
-              private route: ActivatedRoute) {
-                this.route.queryParams.subscribe(params => {
-                  if(typeof params['page'] == 'number'){
-                    this.requestedPage = params['page'];
-                  }
-                });
-              }
+  constructor(private eventsService: EventsService) {}
 
   ngOnInit(): void {
-    this.getEvents(this.requestedPage);
+    this.getEvents(this.currentPage);
   }
 
   getEvents(page:number){
+    this.loading = true;
     this.eventsService
       .getAllEvents(page)
-      .subscribe((eventsResponse: EventResponse)=> {
+      .subscribe((eventsResponse: EventsResponse)=> {
         this.totalPages = eventsResponse.totalPages;
         this.totalItems = eventsResponse.totalItems;
         this.currentPage = eventsResponse.currentPage;
         this.events = eventsResponse.items;
+        this.loading = false;
       });
   }
 
   navigateToPage(page: number){
-    this.requestedPage = page;
-    this.getEvents(page);
+    if(page > 0 && page <= this.totalPages){
+      this.getEvents(page);
+    }
   }
 
 }

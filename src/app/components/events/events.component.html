@@ -1,14 +1,88 @@
-<div class="container">
-    <h1>Todos los eventos culturales</h1>
-    <ul>
-        <li *ngFor="let event of events" >
-            <a [routerLink]="['/event', event.id]" class="">
-                {{event.id}} - {{event.nameEs}}
-            </a>
-        </li>
-    </ul>
-    <p>Total items: {{totalItems}}</p>
-    <p>{{currentPage}}/{{totalPages}} pages</p>
+<mat-toolbar>
+    <span>{{totalItems}} eventos</span>
+    <span class="example-spacer"></span>
+    <button (click)='navigateToPage((+currentPage)-1)' disabled="{{loading || currentPage == 1}}" mat-icon-button aria-label="Anterior página">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <span>{{currentPage}}/{{totalPages}}</span>
+    <button (click)='navigateToPage((+currentPage)+1)' disabled="{{loading || currentPage == totalPages}}" mat-icon-button aria-label="Siguiente página">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+    <mat-button-toggle-group #view="matButtonToggleGroup" value="cards">
+        <mat-button-toggle value="table" aria-label="Vista tabla">
+          <mat-icon>view_list</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="cards" aria-label="Vista tarjetas">
+          <mat-icon>view_module</mat-icon>
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+</mat-toolbar>
+
+<div *ngIf="loading; else loaded" class="spinner">
+    <mat-spinner></mat-spinner>
 </div>
-<button (click)='navigateToPage((+currentPage)+1)'>Next page</button>
+<ng-template #loaded>
+    <div *ngIf="view.value == 'table'" >
+        <table mat-table [dataSource]="events" class="mat-elevation-z0">
+
+            <ng-container matColumnDef="municipalityEs">
+            <th mat-header-cell *matHeaderCellDef> Municipio </th>
+            <td mat-cell *matCellDef="let event"> {{event.municipalityEs}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="priceEs">
+            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <td mat-cell *matCellDef="let event"> {{event.priceEs}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let event"> {{event.startDate | date:"shortDate"}} {{event.openingHoursEs}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="establishmentEs">
+            <th mat-header-cell *matHeaderCellDef> Establecimiento </th>
+            <td mat-cell *matCellDef="let event"> {{event.establishmentEs}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="typeEs">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let event"> {{event.typeEs}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="nameEs">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let event"> {{event.nameEs}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef=displayedColumns></tr>
+            <tr 
+                mat-row 
+                *matRowDef="let event; columns: displayedColumns;"
+                [routerLink]="['/event', event.id]"
+                [@fadeInUpOnEnter]
+            ></tr>
+    
+        </table>
+    </div>
+    <div *ngIf="view.value == 'cards'" >
+
+            <div class="card-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around stretch">
+                    <mat-card [@bounceInOnEnter] *ngFor="let event of events"[routerLink]="['/event', event.id]" class="mat-elevation-z3"  fxFill.lg  fxFlex.lg="0 1 calc(33% - 2rem)" fxFill.lt-lg fxFlex.lt-lg="0 1 calc(50% - 2rem)" fxFill.xs fxFlex.xs="0 1 calc(50% - 2rem)">
+                        <mat-card-header>
+                        <mat-card-subtitle>{{event.municipalityEs}} - {{event.establishmentEs}}</mat-card-subtitle>
+                        <mat-card-title>{{event.nameEs}}</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                        <p>{{event.startDate | date:"shortDate"}} {{event.openingHoursEs}}</p>
+                        <p>{{event.typeEs}}</p>
+                        <mat-divider></mat-divider>
+                        <p>{{event.priceEs}}</p>
+                        </mat-card-content>
+                    </mat-card>
+            </div>
+       
+    </div>
+</ng-template>
+
 
