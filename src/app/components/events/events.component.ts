@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-import { ActivatedRoute } from '@angular/router';
 import { EventsResponse, Event } from 'src/app/models/event.interface';
 import { EventsService } from 'src/app/services/events.service'
 
