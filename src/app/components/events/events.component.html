@@ -78,8 +78,10 @@
                         <mat-card-content>
                         <p>{{event.startDate | date:"shortDate"}} {{event.openingHoursEs}}</p>
                         <p>{{event.typeEs}}</p>
-                        <mat-divider></mat-divider>
-                        <p>{{event.priceEs}}</p>
+                        <div *ngIf="event?.priceEs">
+                            <mat-divider></mat-divider>
+                            <p style="margin-bottom: 0;">{{event.priceEs}}</p>
+                        </div>
                         </mat-card-content>
                     </mat-card>
             </div>

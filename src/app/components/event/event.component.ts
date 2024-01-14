@@ -11,7 +11,8 @@ import { EventsService } from 'src/app/services/events.service';
 export class EventComponent implements OnInit {
 
   event!: Event;
-  panelOpenState = false;
+  panelOpenState: boolean = false;
+  loading: boolean = true;
 
   constructor(
     private eventsService: EventsService,
@@ -28,6 +29,7 @@ export class EventComponent implements OnInit {
       };
       console.log(event);
       this.event = event;
+      this.loading = false;
 
     });
   }

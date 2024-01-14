@@ -27,7 +27,8 @@
           "/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)"
         ],
         "urls": [
-          "https://opendata.euskadi.eus/contenidos/evento/**"
+          "https://opendata.euskadi.eus/contenidos/evento/**",
+          "https://fonts.gstatic.com"
         ]
       }
     }
@@ -39,7 +40,6 @@
         "https://api.euskadi.eus/culture/events/v1.0/events",
         "https://api.euskadi.eus/culture/events/v1.0/events/**",
         "https://opendata.euskadi.eus/contenidos/evento/**"
-        
       ],
       "cacheConfig": {
         "maxSize": 10,

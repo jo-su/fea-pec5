@@ -1,16 +1,11 @@
-.card-sticky{
-    position: sticky;
-    top: 50px;
+.spinner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 3rem;
 }
 
-.sticky-content {
-    position: sticky;
-    top: 50px;
-    z-index: 10;
-    background-color: #ffe4c4;
-    color: #FFFFFF;
-    padding: 3rem 20px;
-}
 mat-toolbar{
     height: 35px;
 }
