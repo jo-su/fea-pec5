@@ -13,3 +13,10 @@
 mat-card{
     margin:0.5rem;
 }
+
+mat-toolbar{
+    position: sticky;
+    top: 50px;
+    z-index: 100;
+    padding: 0 8px;
+}

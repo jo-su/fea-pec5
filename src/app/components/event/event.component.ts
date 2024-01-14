@@ -11,6 +11,7 @@ import { EventsService } from 'src/app/services/events.service';
 export class EventComponent implements OnInit {
 
   event!: Event;
+  panelOpenState = false;
 
   constructor(
     private eventsService: EventsService,

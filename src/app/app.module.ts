@@ -21,9 +21,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgxMasonryModule } from 'ngx-masonry';
 
 
 
@@ -38,7 +40,7 @@ import { NgxMasonryModule } from 'ngx-masonry';
     AppRoutingModule,
     HttpClientModule,
     FlexLayoutModule,
-    NgxMasonryModule,
+    MatExpansionModule,
     MatIconModule,
     MatToolbarModule,
     MatPaginatorModule,
@@ -49,6 +51,8 @@ import { NgxMasonryModule } from 'ngx-masonry';
     MatDividerModule,
     MatCardModule,
     MatGridListModule,
+    MatChipsModule,
+    MatTabsModule,
 
     DatePipe,
     ServiceWorkerModule.register('ngsw-worker.js', {

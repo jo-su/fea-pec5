@@ -6,23 +6,23 @@ export interface EventsResponse {
 }
 
 export interface Attachment {
-    attachedId: number;
-    attachedLanguage: string;
-    attachedName: string;
-    sourceAttachedEs: string;
-    sourceAttachedEu: string;
+    attachedId?: number;
+    attachedLanguage?: string;
+    attachedName?: string;
+    sourceAttachedEs?: string;
+    sourceAttachedEu?: string;
 }
 
 export interface Image {
-    imageFileName: string;
-    imageId: number;
-    imageUrl: string;
-    sourceImageEs: string;
-    sourceImageEu: string;
+    imageFileName?: string;
+    imageId?: number;
+    imageUrl?: string;
+    sourceImageEs?: string;
+    sourceImageEu?: string;
 }
 
 export interface Event {
-    attachment?: Attachment[];
+    attachment: Attachment[];
     companyEs?: string;
     companyEu?: string;
     descriptionEs?: string;
@@ -31,11 +31,11 @@ export interface Event {
     establishmentEs?: string;
     establishmentEu?: string;
     id?: number;
-    images?: Image[];
+    images: Image[];
     language?: string;
     municipalityEs?: string;
     municipalityEu?: string;
-    minucipalityLatitude?: number;
+    municipalityLatitude?: number;
     municipalityLongitude?: number;
     municipalityNoraCode?: number;
     nameEs?: string;

@@ -1,0 +1,13 @@
+.card-sticky{
+    position: sticky;
+    top: 50px;
+}
+
+.sticky-content {
+    position: sticky;
+    top: 50px;
+    z-index: 10;
+    background-color: #ffe4c4;
+    color: #FFFFFF;
+    padding: 3rem 20px;
+}

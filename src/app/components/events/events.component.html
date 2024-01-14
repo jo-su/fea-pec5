@@ -1,5 +1,7 @@
 <mat-toolbar>
-    <span>{{totalItems}} eventos</span>
+    <mat-chip>
+        {{totalItems}} eventos
+    </mat-chip>
     <span class="example-spacer"></span>
     <button (click)='navigateToPage((+currentPage)-1)' disabled="{{loading || currentPage == 1}}" mat-icon-button aria-label="Anterior página">
         <mat-icon>chevron_left</mat-icon>
