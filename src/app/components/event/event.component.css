@@ -11,3 +11,6 @@
     color: #FFFFFF;
     padding: 3rem 20px;
 }
+mat-toolbar{
+    height: 35px;
+}

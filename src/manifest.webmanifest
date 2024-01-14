@@ -1,7 +1,7 @@
 {
-  "name": "fea-pec5",
-  "short_name": "fea-pec5",
-  "theme_color": "#1976d2",
+  "name": "Eventos culturales en Euskadi",
+  "short_name": "Euskadi Cultural",
+  "theme_color": "#3f51b5",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
